@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ProjectileDetectCollision : MonoBehaviour
 {
+
+    public GameObject explosion; // drag your explosion prefab here
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +19,16 @@ public class ProjectileDetectCollision : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) {
         Debug.Log("HIT");
-
+ 
         //Destroy objects if monkey is hit
         if (other.gameObject.CompareTag("Enemy")){ 
+       
+
+            GameObject expl = Instantiate(explosion, other.gameObject.transform.position, Quaternion.identity) as GameObject;
+            Destroy(expl, 0.5f); // delete the explosion after 3 seconds
             Destroy(gameObject);
             Destroy(other.gameObject);   
+           
         }
     }
 }
