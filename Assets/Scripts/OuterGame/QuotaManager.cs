@@ -46,9 +46,9 @@ public class QuotaManager : MonoBehaviour
         UpdateLighting(); // Initialize lighting at the start
         UpdateMoneyText();
 
-        b1.gameObject.SetActive(false);
-        b2.gameObject.SetActive(false);
-        b3.gameObject.SetActive(false);
+        b1.gameObject.SetActive(true);
+        b2.gameObject.SetActive(true);
+        b3.gameObject.SetActive(true);
 
         resourceManager = ResourceManager.instance;
 
@@ -139,31 +139,43 @@ public class QuotaManager : MonoBehaviour
         }
     }
     public GameObject b1,b2,b3;
+    public GameObject skyDome;
+ 
     private void UpdateTimeUI()
     {
         switch (currentIslandVisits)
         {
             case 0:
-                b1.gameObject.SetActive(false);
-                b2.gameObject.SetActive(false);
-                b3.gameObject.SetActive(false);
-                break;
-            case 1:
-                b1.gameObject.SetActive(true);
-                b2.gameObject.SetActive(false);
-                b3.gameObject.SetActive(false);
-                break;
-            case 2:
-                b1.gameObject.SetActive(true);
-                b2.gameObject.SetActive(true);
-                b3.gameObject.SetActive(false);
-                break;
-            case 3:
+                skyDome.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 45);  //Set Rotation value of y  to 0 and rest 0;
+
                 b1.gameObject.SetActive(true);
                 b2.gameObject.SetActive(true);
                 b3.gameObject.SetActive(true);
                 break;
+            case 1:
+                skyDome.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 135);  //Set Rotation value of y  to 0 and rest 0;
+
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(true);
+                b3.gameObject.SetActive(false);
+                break;
+            case 2:
+                skyDome.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 225);  //Set Rotation value of y  to 0 and rest 0;
+
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(false);
+                b3.gameObject.SetActive(false);
+                break;
+            case 3:
+                skyDome.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 315);  //Set Rotation value of y  to 0 and rest 0;
+
+                b1.gameObject.SetActive(false);
+                b2.gameObject.SetActive(false);
+                b3.gameObject.SetActive(false);
+                break;
             default:
+                skyDome.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 45);  //Set Rotation value of y  to 0 and rest 0;
+
                 b1.gameObject.SetActive(true);
                 b2.gameObject.SetActive(true);
                 b3.gameObject.SetActive(true);
